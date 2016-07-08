@@ -42,7 +42,28 @@ public class ReferenceAndroidNativeTest {
 	}
 
 	@Test
-	public void factorialMinusOperation() {
+	public void factorialMinusOperationFirst() {
+		MobileElement buttonTwo = (MobileElement) (driver.findElement(By.id("net.ludeke.calculator:id/digit2")));
+
+		buttonTwo.click();
+
+		MobileElement buttonPlus = (MobileElement) (driver.findElement(By.id("net.ludeke.calculator:id/plus")));
+
+		buttonPlus.click();
+
+		MobileElement buttonEquals = (MobileElement) (driver.findElement(By.id("net.ludeke.calculator:id/equal")));
+		MobileElement resultField = (MobileElement) (driver.findElement(By.xpath("//android.widget.EditText[1]")));
+
+        /* Add two and two. */
+		buttonTwo.click();
+		buttonEquals.click();
+
+        /* Check if within given time the correct result appears in the designated field. */
+		(new WebDriverWait(driver, 30)).until(ExpectedConditions.textToBePresentInElement(resultField, "4"));
+	}
+
+	@Test
+	public void factorialMinusOperationSecond() {
 		MobileElement buttonTwo = (MobileElement) (driver.findElement(By.id("net.ludeke.calculator:id/digit2")));
 
 		buttonTwo.click();
